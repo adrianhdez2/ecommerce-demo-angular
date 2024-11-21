@@ -1,0 +1,35 @@
+<div class="mx-auto max-w-screen-xl mb-6 px-2">
+
+    @switch (productState.state.status()) {
+    @case ("loading") {
+    <p class="mx-auto text-xl text-center my-6">Cargando...</p>
+    }
+
+    @case ("error") {
+    <p class="mx-auto text-xl text-center my-6">Ocurrió un error al obtener los datos.</p>
+    }
+
+    @default {
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        @for (product of productState.state().products; track product) {
+        <app-product-card class="block" [product]="product" (addToCart)="addToCart($event)" />
+        }
+    </div>
+
+    <div class="flex justify-center my-6">
+        <button
+            class="flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            (click)="changePage()">
+            Cargar más resultados
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="size-4 ms-2 rtl:rotate-180">
+                <path d="m7 6 5 5 5-5" />
+                <path d="m7 13 5 5 5-5" />
+            </svg>
+        </button>
+    </div>
+    }
+    }
+</div>
