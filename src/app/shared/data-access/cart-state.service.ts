@@ -68,7 +68,7 @@ export class CartStateService {
             }
         }
 
-        isInCart.quantity += 1;
+        isInCart.quantity < 10 ? isInCart.quantity += 1 : isInCart.quantity;
 
         return {
             products: [...state().products]

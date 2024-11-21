@@ -20,14 +20,14 @@ export default class CartComponent {
   onIncrease(product: ProductItemCart) {
     this.state.update({
       ...product,
-      quantity: product.quantity + 1
+      quantity: product.quantity < 10 ? product.quantity + 1 : product.quantity
     })
   }
 
   onDecrease(product: ProductItemCart) {
     this.state.update({
       ...product,
-      quantity: product.quantity - 1
+      quantity: product.quantity <= 1 ? product.quantity : product.quantity - 1
     })
   }
 }
