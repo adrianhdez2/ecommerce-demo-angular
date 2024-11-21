@@ -11,4 +11,10 @@ import { CartStateService } from '../../data-access/cart-state.service';
 })
 export class HeaderComponent {
   cartState = inject(CartStateService).state;
+
+  isNavbarOpen: boolean = false;
+
+  toggleNavBar() {
+    this.isNavbarOpen = !this.isNavbarOpen;
+  }
 }
